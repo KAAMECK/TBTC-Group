@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 110" role="img" aria-labelledby="title desc">
+  <title id="title">TBTC Group</title>
+  <desc id="desc">Logo de TBTC Group avec un symbole de bâtiment bleu et orange</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 77V49l18-17v45M36 77V22l19 12v43M55 77V42l18-12v47M13 78h67" stroke="#15b2ea" stroke-width="5"/>
+    <path d="M16 51h16M40 39h11M59 46h11" stroke="#ff4d00" stroke-width="3"/>
+  </g>
+  <text x="94" y="68" fill="#0a1525" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="800" letter-spacing="-5">tbtc</text>
+  <rect x="97" y="79" width="52" height="5" rx="2.5" fill="#ff4d00"/>
+  <text x="158" y="86" fill="#15b2ea" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="5">GROUP</text>
+</svg>
