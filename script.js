@@ -50,19 +50,46 @@ const formStatus = document.querySelector('#form-status');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = new FormData(form);
-  const subject = `Demande ${data.get('departement')} — ${data.get('nom')}`;
-  const body = [
-    `Nom : ${data.get('nom')}`,
-    `Téléphone : ${data.get('telephone')}`,
-    `E-mail : ${data.get('email') || '#'}`,
-    `Département : ${data.get('departement')}`,
-    '',
-    'Demande :',
-    data.get('message')
-  ].join('\n');
+  const apiUrl = window.TBTC_CONFIG?.apiUrl;
+  const button = form.querySelector('button[type="submit"]');
 
-  formStatus.textContent = 'Votre application de messagerie va s’ouvrir avec la demande préparée.';
-  window.location.href = `mailto:tsidkeenutshilewubeya@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  if (!apiUrl || apiUrl === '#') {
+    formStatus.textContent = 'Le registre administratif est en cours de configuration. Veuillez rÃ©essayer prochainement.';
+    return;
+  }
+
+  const payload = new URLSearchParams({
+    nom: String(data.get('nom') || ''),
+    telephone: String(data.get('telephone') || ''),
+    email: String(data.get('email') || '#'),
+    departement: String(data.get('departement') || ''),
+    objet: String(data.get('objet') || ''),
+    message: String(data.get('message') || ''),
+    lieu: String(data.get('lieu') || '#'),
+    budget: String(data.get('budget') || '#'),
+    delai: String(data.get('delai') || '#'),
+    source: 'Site web',
+    priorite: 'Normale',
+    website: String(data.get('website') || '')
+  });
+
+  button.disabled = true;
+  button.textContent = 'Enregistrementâ€¦';
+  formStatus.textContent = '';
+
+  fetch(apiUrl, { method: 'POST', body: payload })
+    .then((response) => response.json())
+    .then((result) => {
+      if (!result.ok) throw new Error(result.error || 'Enregistrement impossible');
+      form.reset();
+      formStatus.textContent = `Demande enregistrÃ©e avec succÃ¨s. RÃ©fÃ©rence : ${result.reference}`;
+    })
+    .catch(() => {
+      formStatus.textContent = 'La demande nâ€™a pas pu Ãªtre enregistrÃ©e. VÃ©rifiez votre connexion puis rÃ©essayez.';
+    })
+    .finally(() => {
+      button.disabled = false;
+      button.textContent = 'Envoyer la demande';
+    });
 });
-
 document.querySelector('#year').textContent = new Date().getFullYear();

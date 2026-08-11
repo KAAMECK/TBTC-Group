@@ -1,5 +1,7 @@
 Archives/
 tmp/
+Administration/
+outputs/
 .DS_Store
 Thumbs.db
 desktop.ini

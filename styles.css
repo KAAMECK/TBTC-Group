@@ -1032,6 +1032,20 @@ h3 {
   text-align: center;
 }
 
+.form-trap {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+}
+
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: .65;
+  transform: none;
+}
 .site-footer {
   color: #afbbc8;
   background: #030912;
