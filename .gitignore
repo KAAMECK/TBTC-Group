@@ -6,3 +6,5 @@ outputs/
 Thumbs.db
 desktop.ini
 *.log
+.clasp.json
+.clasprc.json
