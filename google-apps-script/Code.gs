@@ -1,4 +1,5 @@
 const TBTC = Object.freeze({
+  SPREADSHEET_ID: '11_eZ6FrQD0yi8307Sf3yYK3zOuixDOM07o0bTEWRaO8',
   SHEET_NAME: 'Demandes',
   HEADER_ROW: 4,
   FIRST_DATA_ROW: 5,
@@ -127,6 +128,7 @@ function onOpen() {
 function getSpreadsheet_() {
   const id = PropertiesService.getScriptProperties().getProperty('SPREADSHEET_ID');
   if (id) return SpreadsheetApp.openById(id);
+  if (TBTC.SPREADSHEET_ID) return SpreadsheetApp.openById(TBTC.SPREADSHEET_ID);
   const active = SpreadsheetApp.getActiveSpreadsheet();
   if (!active) throw new Error('Aucun classeur configuré. Exécutez setConfiguration().');
   return active;
