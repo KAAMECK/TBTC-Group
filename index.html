@@ -335,7 +335,7 @@
             </select>
           </label>
           <label>Objet de la demande
-            <input type="text" name="objet" placeholder="Ex. Devis de construction, achat dâ€™Ã©quipementsâ€¦" required>
+            <input type="text" name="objet" placeholder="Ex. Devis de construction, achat d’équipements…" required>
           </label>
           <div class="form-row">
             <label>Lieu du projet
@@ -345,18 +345,43 @@
               <input type="text" name="budget" placeholder="USD, CDF ou #">
             </label>
           </div>
-          <label>DÃ©lai souhaitÃ©
-            <input type="text" name="delai" placeholder="Date ou pÃ©riode souhaitÃ©e / #">
+          <label>Délai souhaité
+            <input type="text" name="delai" placeholder="Date ou période souhaitée / #">
           </label>
           <label>Votre demande
-            <textarea name="message" rows="5" placeholder="DÃ©crivez briÃ¨vement votre projet, le lieu et le dÃ©lai souhaitÃ©." required></textarea>
+            <textarea name="message" rows="5" placeholder="Décrivez brièvement votre projet, le lieu et le délai souhaité." required></textarea>
           </label>
           <label class="form-trap" aria-hidden="true">Site web
             <input type="text" name="website" tabindex="-1" autocomplete="off">
           </label>
-          <button class="button button-primary button-full" type="submit">Envoyer la demande</button>
-          <p class="form-note">La demande est enregistrÃ©e dans le registre administratif sÃ©curisÃ© de TBTC Group.</p>
+          <button class="button button-primary button-full submit-button" type="submit">
+            <span class="submit-button-label">Envoyer la demande</span>
+            <span class="submit-button-loader" aria-hidden="true"></span>
+          </button>
+          <p class="form-note">La demande est enregistrée dans le registre administratif sécurisé de TBTC Group.</p>
           <p class="form-status" id="form-status" aria-live="polite"></p>
+          <section class="submission-receipt" id="submission-receipt" aria-live="polite" hidden>
+            <div class="receipt-check" aria-hidden="true">✓</div>
+            <div class="receipt-content">
+              <span class="receipt-eyebrow">Accusé d’enregistrement TBTC</span>
+              <h3>Demande enregistrée avec succès</h3>
+              <p>Conservez les informations ci-dessous pour le suivi de votre demande.</p>
+              <dl class="receipt-details">
+                <div>
+                  <dt>N° d’ordre</dt>
+                  <dd id="receipt-reference">#</dd>
+                </div>
+                <div>
+                  <dt>Date</dt>
+                  <dd id="receipt-date">#</dd>
+                </div>
+                <div>
+                  <dt>Heure de Kinshasa</dt>
+                  <dd id="receipt-time">#</dd>
+                </div>
+              </dl>
+            </div>
+          </section>
         </form>
       </div>
     </section>

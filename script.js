@@ -46,15 +46,33 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
 
 const form = document.querySelector('#contact-form');
 const formStatus = document.querySelector('#form-status');
+const receipt = document.querySelector('#submission-receipt');
+const receiptReference = document.querySelector('#receipt-reference');
+const receiptDate = document.querySelector('#receipt-date');
+const receiptTime = document.querySelector('#receipt-time');
+
+const kinshasaDate = new Intl.DateTimeFormat('fr-FR', {
+  timeZone: 'Africa/Kinshasa',
+  dateStyle: 'long'
+});
+
+const kinshasaTime = new Intl.DateTimeFormat('fr-FR', {
+  timeZone: 'Africa/Kinshasa',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit'
+});
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = new FormData(form);
   const apiUrl = window.TBTC_CONFIG?.apiUrl;
   const button = form.querySelector('button[type="submit"]');
+  const buttonLabel = button.querySelector('.submit-button-label');
 
   if (!apiUrl || apiUrl === '#') {
-    formStatus.textContent = 'Le registre administratif est en cours de configuration. Veuillez rÃ©essayer prochainement.';
+    formStatus.textContent = 'Le registre administratif est en cours de configuration. Veuillez réessayer prochainement.';
+    formStatus.classList.add('is-error');
     return;
   }
 
@@ -74,22 +92,34 @@ form.addEventListener('submit', (event) => {
   });
 
   button.disabled = true;
-  button.textContent = 'Enregistrementâ€¦';
+  button.classList.add('is-loading');
+  buttonLabel.textContent = 'Enregistrement en cours…';
+  form.setAttribute('aria-busy', 'true');
   formStatus.textContent = '';
+  formStatus.classList.remove('is-error');
+  receipt.hidden = true;
 
   fetch(apiUrl, { method: 'POST', body: payload })
     .then((response) => response.json())
     .then((result) => {
       if (!result.ok) throw new Error(result.error || 'Enregistrement impossible');
       form.reset();
-      formStatus.textContent = `Demande enregistrÃ©e avec succÃ¨s. RÃ©fÃ©rence : ${result.reference}`;
+      const receivedAt = new Date(result.receivedAt || Date.now());
+      receiptReference.textContent = result.reference || '#';
+      receiptDate.textContent = kinshasaDate.format(receivedAt);
+      receiptTime.textContent = kinshasaTime.format(receivedAt);
+      receipt.hidden = false;
+      receipt.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     })
     .catch(() => {
-      formStatus.textContent = 'La demande nâ€™a pas pu Ãªtre enregistrÃ©e. VÃ©rifiez votre connexion puis rÃ©essayez.';
+      formStatus.textContent = 'La demande n’a pas pu être enregistrée. Vérifiez votre connexion puis réessayez.';
+      formStatus.classList.add('is-error');
     })
     .finally(() => {
       button.disabled = false;
-      button.textContent = 'Envoyer la demande';
+      button.classList.remove('is-loading');
+      buttonLabel.textContent = 'Envoyer la demande';
+      form.removeAttribute('aria-busy');
     });
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
