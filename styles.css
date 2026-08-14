@@ -229,8 +229,8 @@ h3 {
 }
 
 .hero-media {
-  background: url("assets/images/chantier-ferraillage.jpg") center 42% / cover no-repeat;
-  filter: saturate(.8) contrast(1.05);
+  background: url("assets/images/architecture/residence-r4-facade.jpg") center 48% / cover no-repeat;
+  filter: saturate(.92) contrast(1.04);
 }
 
 .hero-overlay {
@@ -649,7 +649,7 @@ h3 {
 
 .construction-image {
   min-height: 620px;
-  background: url("assets/images/structure-beton-02.jpg") center / cover no-repeat;
+  background: url("assets/images/architecture/residence-r4-perspective-02.jpg") center / cover no-repeat;
 }
 
 .construction-content {
@@ -1607,10 +1607,10 @@ h3 {
   content: "";
 }
 
-.page-hero-about::before { background: url("assets/images/structure-beton-01.jpg") center 42% / cover no-repeat; }
-.page-hero-departments::before { background: url("assets/images/structure-beton-02.jpg") center 36% / cover no-repeat; }
-.page-hero-projects::before { background: url("assets/images/chantier-ferraillage.jpg") center / cover no-repeat; }
-.page-hero-contact::before { background: url("assets/images/maconnerie.jpg") center / cover no-repeat; }
+.page-hero-about::before { background: url("assets/images/architecture/residence-r4-perspective-01.jpg") center 48% / cover no-repeat; }
+.page-hero-departments::before { background: url("assets/images/architecture/residence-r4-perspective-03.jpg") center 45% / cover no-repeat; }
+.page-hero-projects::before { background: url("assets/images/architecture/residence-r4-perspective-04.jpg") center 48% / cover no-repeat; }
+.page-hero-contact::before { background: url("assets/images/architecture/residence-contemporaine-facade-02.jpg") center / cover no-repeat; }
 
 .page-hero-overlay {
   z-index: -1;

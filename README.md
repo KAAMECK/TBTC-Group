@@ -17,3 +17,7 @@ Le formulaire envoie les demandes vers l’application Web Google Apps Script co
 ## Publication
 
 Site public : https://kaameck.github.io/TBTC-Group/
+
+## Galerie architecturale
+
+Les rendus sélectionnés sont publiés dans `assets/images/architecture/` avec des noms descriptifs. La vitrine donne la priorité aux plans, façades et perspectives 3D avant les images de chantier.
