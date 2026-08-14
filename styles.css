@@ -1576,3 +1576,84 @@ h3 {
     transform: none;
   }
 }
+
+
+/* Multipage layouts */
+.main-nav > a.is-active:not(.nav-cta)::after {
+  transform: scaleX(1);
+}
+
+.main-nav > a.is-active:not(.nav-cta) {
+  color: var(--navy);
+}
+
+.page-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 570px;
+  padding: 170px 0 82px;
+  color: var(--white);
+  background-position: center;
+  background-size: cover;
+  isolation: isolate;
+}
+
+.page-hero::before,
+.page-hero-overlay {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  content: "";
+}
+
+.page-hero-about::before { background: url("assets/images/structure-beton-01.jpg") center 42% / cover no-repeat; }
+.page-hero-departments::before { background: url("assets/images/structure-beton-02.jpg") center 36% / cover no-repeat; }
+.page-hero-projects::before { background: url("assets/images/chantier-ferraillage.jpg") center / cover no-repeat; }
+.page-hero-contact::before { background: url("assets/images/maconnerie.jpg") center / cover no-repeat; }
+
+.page-hero-overlay {
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(5, 17, 32, .97) 0%, rgba(5, 17, 32, .83) 52%, rgba(5, 17, 32, .45) 100%);
+}
+
+.page-hero .container { max-width: var(--container); }
+.page-hero h1 { max-width: 900px; margin-bottom: 20px; color: var(--white); font-size: clamp(3.2rem, 6vw, 6rem); }
+.page-hero .container > p:last-child { max-width: 760px; margin-bottom: 0; color: rgba(255,255,255,.82); font-size: 1.08rem; }
+.breadcrumb { display: flex; gap: 10px; margin-bottom: 38px; color: rgba(255,255,255,.65); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+.breadcrumb a:hover { color: var(--cyan); }
+
+.home-portals { background: var(--soft); }
+.portal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.portal-card { display: flex; flex-direction: column; min-height: 330px; padding: 36px; background: var(--white); border-top: 4px solid var(--cyan); box-shadow: 0 8px 25px rgba(8,22,41,.04); transition: transform .25s ease, box-shadow .25s ease; }
+.portal-card:nth-child(2) { border-top-color: var(--orange); }
+.portal-card:nth-child(3) { border-top-color: #15b74b; }
+.portal-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+.portal-card > span { color: var(--cyan-dark); font-size: .78rem; font-weight: 900; }
+.portal-card h3 { margin: 48px 0 16px; font-size: 1.55rem; }
+.portal-card p { color: var(--muted); }
+.portal-card b { margin-top: auto; color: var(--navy); font-size: .88rem; }
+.project-approach { background: var(--soft); }
+
+.cta-strip { padding: 72px 0; color: var(--white); background: var(--navy-3); }
+.cta-strip .container { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.cta-strip h2 { margin: 0; color: var(--white); font-size: clamp(2.2rem, 4vw, 3.8rem); }
+.cta-strip .eyebrow { margin-bottom: 10px; }
+
+@media (max-width: 920px) {
+  .page-hero { min-height: 500px; padding: 145px 0 70px; }
+  .portal-grid { grid-template-columns: 1fr; }
+  .portal-card { min-height: 260px; }
+}
+
+@media (max-width: 680px) {
+  .page-hero { min-height: 470px; padding: 122px 0 62px; }
+  .page-hero h1 { font-size: clamp(2.65rem, 13vw, 4rem); }
+  .page-hero .container > p:last-child { font-size: .98rem; }
+  .breadcrumb { margin-bottom: 25px; }
+  .portal-card { min-height: 0; padding: 28px; }
+  .portal-card h3 { margin-top: 34px; }
+  .cta-strip { padding: 58px 0; }
+  .cta-strip .container { align-items: stretch; flex-direction: column; }
+  .cta-strip .button { width: 100%; }
+}

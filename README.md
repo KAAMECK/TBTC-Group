@@ -1,22 +1,19 @@
 # TBTC Group
 
-Site vitrine responsive de TBTC Group, présentant les six départements du groupe : Construction, Formation, Track, Business, Électronique et Élevage.
+Site vitrine multipage de TBTC Group, publi? avec GitHub Pages.
 
-## Mise en ligne
+## Pages
 
-Le site est conçu pour GitHub Pages et ne nécessite aucune étape de compilation.
+- `index.html` ? accueil et acc?s aux rubriques
+- `a-propos.html` ? mission, vision, engagements et m?thode
+- `departements.html` ? les six p?les d?expertise
+- `realisations.html` ? galerie et suivi des travaux
+- `contact.html` ? coordonn?es, formulaire et accus? d?enregistrement
 
-## Structure
+## Formulaire administratif
 
-- `index.html` : structure et contenus du site
-- `styles.css` : identité visuelle et mise en page responsive
-- `script.js` : navigation mobile, animations et envoi des demandes vers le registre administratif
-- `assets/` : logo vectoriel et photos web optimisées
-- `config.js` : URL publique de l’API administrative Google Apps Script
-- `google-apps-script/` : API d’enregistrement et guide de déploiement vers Google Sheets
+Le formulaire envoie les demandes vers l?application Web Google Apps Script configur?e dans `config.js`. Apr?s validation, le visiteur re?oit une r?f?rence, une date et une heure de Kinshasa.
 
-## Administration
+## Publication
 
-Les nouvelles demandes sont enregistrées dans un Google Sheet structuré, puis classées automatiquement de la plus récente à la plus ancienne. La clé de lecture administrative et les liens privés sont conservés uniquement dans le fichier local `Administration/ACCES_ADMIN_TBTC.txt`, exclu de Git.
-
-Les documents de travail, archives sources, classeurs locaux et secrets administratifs sont volontairement exclus du dépôt public.
+Site public : https://kaameck.github.io/TBTC-Group/

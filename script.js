@@ -1,7 +1,7 @@
 const header = document.querySelector('.site-header');
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.main-nav');
-const navLinks = nav.querySelectorAll('a');
+const navLinks = nav ? nav.querySelectorAll('a') : [];
 
 const closeMenu = () => {
   toggle.setAttribute('aria-expanded', 'false');
@@ -9,7 +9,7 @@ const closeMenu = () => {
   document.body.classList.remove('menu-open');
 };
 
-toggle.addEventListener('click', () => {
+toggle?.addEventListener('click', () => {
   const isOpen = toggle.getAttribute('aria-expanded') === 'true';
   toggle.setAttribute('aria-expanded', String(!isOpen));
   toggle.setAttribute('aria-label', isOpen ? 'Ouvrir le menu' : 'Fermer le menu');
@@ -23,7 +23,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 window.addEventListener('scroll', () => {
-  header.classList.toggle('is-scrolled', window.scrollY > 24);
+  header?.classList.toggle('is-scrolled', window.scrollY > 24);
 }, { passive: true });
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -63,7 +63,7 @@ const kinshasaTime = new Intl.DateTimeFormat('fr-FR', {
   second: '2-digit'
 });
 
-form.addEventListener('submit', (event) => {
+form?.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = new FormData(form);
   const apiUrl = window.TBTC_CONFIG?.apiUrl;
@@ -122,4 +122,6 @@ form.addEventListener('submit', (event) => {
       form.removeAttribute('aria-busy');
     });
 });
-document.querySelector('#year').textContent = new Date().getFullYear();
+document.querySelectorAll('.current-year').forEach((year) => {
+  year.textContent = new Date().getFullYear();
+});
