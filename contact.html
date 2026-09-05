@@ -17,18 +17,17 @@
   <a class="skip-link" href="#contenu">Aller au contenu</a>
   <header class="site-header" id="header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="TBTC Group — Accueil">
+      <a class="brand" href="index.html" aria-label="TBTC Group — À propos">
         <img src="assets/logo-tbtc.svg" alt="TBTC Group">
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Ouvrir le menu">
         <span></span><span></span><span></span>
       </button>
       <nav class="main-nav" id="navigation" aria-label="Navigation principale">
-        <a href="index.html">Accueil</a>
-        <a href="a-propos.html">Le groupe</a>
+        <a href="contact.html" class="is-active" aria-current="page">Contact</a>
+        <a href="index.html">À propos</a>
         <a href="departements.html">Départements</a>
         <a href="realisations.html">Réalisations</a>
-        <a href="contact.html" class="is-active" aria-current="page">Contact</a>
         <a class="nav-cta" href="contact.html#contact-form">Demander un devis</a>
       </nav>
     </div>
@@ -37,18 +36,18 @@
     <section class="page-hero page-hero-contact" aria-labelledby="page-title">
       <div class="page-hero-overlay" aria-hidden="true"></div>
       <div class="container reveal">
-        <p class="breadcrumb"><a href="index.html">Accueil</a><span>→</span>Contact</p>
+        <p class="breadcrumb"><a href="index.html">À propos</a><span>→</span>Contact</p>
         <p class="eyebrow light">Contact</p>
-        <h1 id="page-title">Votre projet commence par une demande claire.</h1>
-        <p>Choisissez le département concerné, décrivez votre besoin et recevez un numéro d’ordre pour le suivi administratif de votre demande.</p>
+        <h1 id="page-title">Une demande simple, un suivi clair.</h1>
+        <p>Indiquez votre nom et décrivez brièvement votre besoin. La date, l’heure et le numéro d’ordre sont ajoutés automatiquement.</p>
       </div>
     </section>
 <section class="contact-section" id="contact">
       <div class="container contact-layout">
         <div class="contact-copy reveal">
           <p class="eyebrow light">Parlons de votre projet</p>
-          <h2>Un besoin précis ou une idée à structurer&nbsp;?</h2>
-          <p>Indiquez le département concerné et l’objectif recherché. Notre équipe vous orientera vers la prochaine étape.</p>
+          <h2>Dites-nous simplement ce dont vous avez besoin.</h2>
+          <p>Un nom et une courte description suffisent pour enregistrer votre demande de devis.</p>
 
           <div class="contact-details">
             <div>
@@ -72,57 +71,23 @@
 
         <form class="contact-form reveal delay-1" id="contact-form" action="#" method="post">
           <div class="form-heading">
-            <span>Demande de contact</span>
-            <b>Réponse selon disponibilité</b>
+            <span>Demande de devis</span>
+            <b>Enregistrement immédiat</b>
           </div>
-          <label>Nom complet
-            <input type="text" name="nom" placeholder="Votre nom" required>
+          <label>Votre nom
+            <input type="text" name="nom" placeholder="Votre nom complet" autocomplete="name" required>
           </label>
-          <div class="form-row">
-            <label>Téléphone
-              <input type="tel" name="telephone" placeholder="+243 #" required>
-            </label>
-            <label>E-mail
-              <input type="email" name="email" placeholder="vous@exemple.com">
-            </label>
-          </div>
-          <label>Département concerné
-            <select name="departement" required>
-              <option value="">Sélectionner</option>
-              <option>TBTC Construction</option>
-              <option>TBTC Formation</option>
-              <option>TBTC Track</option>
-              <option>TBTC Business</option>
-              <option>TBTC Électronique</option>
-              <option>TBTC Élevage</option>
-              <option>Plusieurs départements</option>
-            </select>
-          </label>
-          <label>Objet de la demande
-            <input type="text" name="objet" placeholder="Ex. Devis de construction, achat d’équipements…" required>
-          </label>
-          <div class="form-row">
-            <label>Lieu du projet
-              <input type="text" name="lieu" placeholder="Kinshasa / #">
-            </label>
-            <label>Budget indicatif
-              <input type="text" name="budget" placeholder="USD, CDF ou #">
-            </label>
-          </div>
-          <label>Délai souhaité
-            <input type="text" name="delai" placeholder="Date ou période souhaitée / #">
-          </label>
-          <label>Votre demande
-            <textarea name="message" rows="5" placeholder="Décrivez brièvement votre projet, le lieu et le délai souhaité." required></textarea>
+          <label>Décrivez brièvement votre besoin
+            <textarea name="message" rows="5" placeholder="Ex. Je souhaite un plan architectural pour une maison R+3." required></textarea>
           </label>
           <label class="form-trap" aria-hidden="true">Site web
             <input type="text" name="website" tabindex="-1" autocomplete="off">
           </label>
           <button class="button button-primary button-full submit-button" type="submit">
-            <span class="submit-button-label">Envoyer la demande</span>
+            <span class="submit-button-label">Envoyer ma demande</span>
             <span class="submit-button-loader" aria-hidden="true"></span>
           </button>
-          <p class="form-note">La demande est enregistrée dans le registre administratif sécurisé de TBTC Group.</p>
+          <p class="form-note">La date et l’heure sont ajoutées automatiquement au registre administratif de TBTC Group.</p>
           <p class="form-status" id="form-status" aria-live="polite"></p>
           <section class="submission-receipt" id="submission-receipt" aria-live="polite" hidden>
             <div class="receipt-check" aria-hidden="true">✓</div>
@@ -131,18 +96,9 @@
               <h3>Demande enregistrée avec succès</h3>
               <p>Conservez les informations ci-dessous pour le suivi de votre demande.</p>
               <dl class="receipt-details">
-                <div>
-                  <dt>N° d’ordre</dt>
-                  <dd id="receipt-reference">#</dd>
-                </div>
-                <div>
-                  <dt>Date</dt>
-                  <dd id="receipt-date">#</dd>
-                </div>
-                <div>
-                  <dt>Heure de Kinshasa</dt>
-                  <dd id="receipt-time">#</dd>
-                </div>
+                <div><dt>N° d’ordre</dt><dd id="receipt-reference">#</dd></div>
+                <div><dt>Date</dt><dd id="receipt-date">#</dd></div>
+                <div><dt>Heure de Kinshasa</dt><dd id="receipt-time">#</dd></div>
               </dl>
             </div>
           </section>
@@ -158,11 +114,10 @@
       </div>
       <div>
         <h3>Navigation</h3>
-        <a href="index.html">Accueil</a>
-        <a href="a-propos.html">Le groupe</a>
+        <a href="contact.html">Contact</a>
+        <a href="index.html">À propos</a>
         <a href="departements.html">Départements</a>
         <a href="realisations.html">Réalisations</a>
-        <a href="contact.html">Contact</a>
       </div>
       <div>
         <h3>Informations</h3>
