@@ -78,14 +78,16 @@ form?.addEventListener('submit', (event) => {
 
   const payload = new URLSearchParams({
     nom: String(data.get('nom') || ''),
-    telephone: String(data.get('telephone') || ''),
-    email: String(data.get('email') || '#'),
-    departement: String(data.get('departement') || ''),
-    objet: String(data.get('objet') || ''),
     message: String(data.get('message') || ''),
-    lieu: String(data.get('lieu') || '#'),
-    budget: String(data.get('budget') || '#'),
-    delai: String(data.get('delai') || '#'),
+    // Valeurs internes : elles préservent la compatibilité avec le registre existant
+    // sans demander ces informations au visiteur.
+    telephone: '#',
+    email: '#',
+    departement: 'Demande générale',
+    objet: 'Demande de devis',
+    lieu: '#',
+    budget: '#',
+    delai: '#',
     source: 'Site web',
     priorite: 'Normale',
     website: String(data.get('website') || '')

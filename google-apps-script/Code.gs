@@ -15,7 +15,7 @@ function doPost(e) {
       return json_({ ok: true, ignored: true });
     }
 
-    const required = ['nom', 'telephone', 'departement', 'objet', 'message'];
+    const required = ['nom', 'message'];
     const missing = required.filter(function (key) {
       return !String(payload[key] || '').trim();
     });
@@ -30,11 +30,11 @@ function doPost(e) {
       now,
       'Nouvelle',
       clean_(payload.priorite || 'Normale'),
-      clean_(payload.departement),
+      clean_(payload.departement || 'Demande générale'),
       clean_(payload.nom),
-      clean_(payload.telephone),
+      clean_(payload.telephone || '#'),
       clean_(payload.email || '#'),
-      clean_(payload.objet),
+      clean_(payload.objet || 'Demande de devis'),
       clean_(payload.message),
       clean_(payload.lieu || '#'),
       clean_(payload.budget || '#'),

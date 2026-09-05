@@ -4,15 +4,15 @@ Site vitrine multipage de TBTC Group, publié avec GitHub Pages.
 
 ## Pages
 
-- `index.html` — accueil et accès aux rubriques
-- `a-propos.html` — mission, vision, engagements et méthode
+- `index.html` — page d’accueil À propos
+- `a-propos.html` — redirection de compatibilité vers la page À propos
 - `departements.html` — les six pôles d’expertise
 - `realisations.html` — galerie et suivi des travaux
 - `contact.html` — coordonnées, formulaire et accusé d’enregistrement
 
 ## Formulaire administratif
 
-Le formulaire envoie les demandes vers l’application Web Google Apps Script configurée dans `config.js`. Après validation, le visiteur reçoit une référence, une date et une heure de Kinshasa.
+Le formulaire de devis demande uniquement le nom et une brève description du besoin. L’application Web Google Apps Script configurée dans `config.js` ajoute automatiquement la date, l’heure et la référence.
 
 ## Publication
 
