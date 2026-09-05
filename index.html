@@ -48,7 +48,7 @@
         <div class="contact-copy reveal">
           <p class="eyebrow light">Parlons de votre projet</p>
           <h2>Dites-nous simplement ce dont vous avez besoin.</h2>
-          <p>Un nom et une courte description suffisent pour demander un devis, une formation, une intervention ou préparer une commande.</p>
+          <p>Indiquez vos coordonnées, choisissez le département et décrivez votre besoin. Précisez aussi comment vous avez connu TBTC pour nous aider à orienter votre demande.</p>
 
         </div>
 
@@ -58,11 +58,63 @@
             <b>Un besoin, quelques mots</b>
           </div>
           <p class="request-context" id="request-context" hidden></p>
-          <label>Votre nom
-            <input type="text" name="nom" placeholder="Votre nom complet" autocomplete="name" required>
+          <label>Nom complet
+            <input type="text" name="nom" placeholder="Votre nom complet" autocomplete="name" maxlength="150" required>
           </label>
+          <label>Numéro de téléphone du client
+            <input type="tel" name="telephone" placeholder="Ex. +243 812 345 678" autocomplete="tel" maxlength="30" required>
+          </label>
+          <label>Choix du département
+            <select name="departement" required>
+              <option value="">Choisissez un département</option>
+              <option value="construction">Construction</option>
+              <option value="formation">Formation</option>
+              <option value="track">Track — Géolocalisation</option>
+              <option value="business">Business</option>
+              <option value="electronique">Électronique</option>
+              <option value="elevage">Élevage</option>
+            </select>
+          </label>
+          <fieldset class="discovery-fields">
+            <legend>Comment avez-vous connu TBTC ?</legend>
+            <p class="discovery-note" id="discovery-note">Choisissez la source qui vous a fait découvrir le site.</p>
+            <label>Origine de votre visite
+              <select name="origine" aria-describedby="discovery-note" required>
+                <option value="">Choisissez une origine</option>
+                <option value="commissionnaire">Un commissionnaire</option>
+                <option value="social">Réseau social / messagerie</option>
+                <option value="search">Moteur de recherche</option>
+                <option value="website">Lien depuis un autre site</option>
+                <option value="direct">Adresse saisie ou favori</option>
+                <option value="other">Autre source</option>
+              </select>
+            </label>
+            <div id="social-fields" hidden>
+              <label>Quel réseau ou quelle messagerie ?
+                <select name="reseau" disabled>
+                  <option value="">Choisissez un réseau</option>
+                  <option>Facebook</option><option>Instagram</option><option>WhatsApp</option>
+                  <option>TikTok</option><option>LinkedIn</option><option>YouTube</option>
+                  <option>X</option><option>Telegram</option><option>Autre</option>
+                </select>
+              </label>
+            </div>
+            <div id="source-detail-fields" hidden>
+              <label>Précisez la source
+                <input name="source_detail" type="text" placeholder="Nom du site, du moteur ou de la source" maxlength="160" disabled>
+              </label>
+            </div>
+            <div id="commission-fields" hidden>
+              <label>Nom complet du commissionnaire
+                <input name="commissionnaire_nom" type="text" autocomplete="off" maxlength="150" disabled>
+              </label>
+              <label>Numéro de téléphone du commissionnaire
+                <input name="commissionnaire_telephone" type="tel" placeholder="Ex. +243 812 345 678" autocomplete="off" maxlength="30" disabled>
+              </label>
+            </div>
+          </fieldset>
           <label>Décrivez brièvement votre besoin
-            <textarea name="message" rows="5" placeholder="Ex. Je souhaite un plan architectural pour une maison R+3." required></textarea>
+            <textarea name="message" rows="5" maxlength="4000" placeholder="Ex. Je souhaite un plan architectural pour une maison R+3." required></textarea>
           </label>
           <label class="form-trap" aria-hidden="true">Site web
             <input type="text" name="website" tabindex="-1" autocomplete="off">
@@ -91,41 +143,32 @@
     </section>
   </main>
 <footer class="site-footer">
-          <div class="container footer-contact">
-            <div>
-              <h3>Téléphones</h3>
-              <a href="tel:+243819810064">+243 819 810 064</a>
-              <a href="tel:+243981973754">+243 981 973 754</a>
-              <a href="tel:+243846128067">+243 846 128 067</a>
-              <a href="tel:+24205864294">+242 058 64 294</a>
-            </div>
-            <div>
-              <h3>E-mails</h3>
-              <a href="mailto:tsidkeenutshilewubeya@gmail.com">tsidkeenutshilewubeya@gmail.com</a>
-              <a href="mailto:tsidkenutshilewuformation@gmail.com">tsidkenutshilewuformation@gmail.com</a>
-            </div>
-            <div>
-              <h3>Adresse</h3>
-              <p>Kinshasa, République démocratique du Congo<br>Adresse complète : #</p>
-            </div>
-          </div>
-    <div class="container footer-top">
-      <div class="footer-brand">
-        <img src="assets/logo-tbtc.svg" alt="TBTC Group">
-        <p>Des expertises réunies pour accompagner vos projets avec méthode.</p>
+    <div class="container footer-grid">
+      <div class="footer-identity">
+        <a class="footer-logo" href="index.html" aria-label="TBTC Group — Accueil"><img src="assets/logo-tbtc.svg" alt="TBTC Group" width="168" height="44"></a>
+        <p>Des expertises réunies pour vos projets.</p>
+        <address>Kinshasa, République démocratique du Congo<br>Adresse complète : #</address>
+        <p class="footer-meta">Responsable : Tsidkenu Tshilewu Beya<br>RCCM / ID Nat. / NIF : #</p>
       </div>
-      <div>
-        <h3>Navigation</h3>
+      <nav class="footer-links" aria-label="Navigation du pied de page">
+        <h3>Découvrir</h3>
         <a href="index.html">Accueil</a>
         <a href="a-propos.html">À propos</a>
         <a href="departements.html">Départements</a>
         <a href="realisations.html">Réalisations</a>
+        <p class="footer-meta">Réseaux sociaux : #</p>
+      </nav>
+      <div class="footer-phones">
+        <h3>Nous appeler</h3>
+        <a href="tel:+243819810064">+243 819 810 064</a>
+        <a href="tel:+243981973754">+243 981 973 754</a>
+        <a href="tel:+243846128067">+243 846 128 067</a>
+        <a href="tel:+24205864294">+242 058 64 294</a>
       </div>
-      <div>
-        <h3>Informations</h3>
-        <p>Responsable : Tsidkenu Tshilewu Beya</p>
-        <p>RCCM / ID Nat. / NIF : #</p>
-        <p>Réseaux sociaux : #</p>
+      <div class="footer-emails">
+        <h3>Nous écrire</h3>
+        <a href="mailto:tsidkeenutshilewubeya@gmail.com">tsidkeenutshilewubeya@gmail.com</a>
+        <a href="mailto:tsidkenutshilewuformation@gmail.com">tsidkenutshilewuformation@gmail.com</a>
       </div>
     </div>
     <div class="container footer-bottom">
@@ -134,6 +177,7 @@
     </div>
   </footer>
   <script src="config.js"></script>
+  <script src="attribution.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

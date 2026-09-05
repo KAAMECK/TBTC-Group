@@ -6,6 +6,13 @@
   <meta http-equiv="refresh" content="0; url=index.html">
   <link rel="canonical" href="index.html">
   <title>Accueil | TBTC Group</title>
+  <script src="attribution.js"></script>
+  <script>
+    let storage;
+    try { storage = window.sessionStorage; } catch (_) {}
+    window.TBTC_ATTRIBUTION?.resolve(window.location.href, document.referrer, storage);
+    window.location.replace('index.html' + window.location.search + (window.location.hash || '#contact-form'));
+  </script>
 </head>
 <body>
   <p>La page d’accueil est disponible sur <a href="index.html">TBTC Group</a>.</p>

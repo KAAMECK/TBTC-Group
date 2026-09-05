@@ -1157,67 +1157,50 @@ h3 {
   border-top: 1px solid rgba(255, 255, 255, .08);
 }
 
-.footer-contact {
+.footer-grid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
-  gap: 36px;
-  padding: 44px 0;
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  grid-template-columns: minmax(0,1.25fr) minmax(0,.7fr) minmax(0,.9fr) minmax(0,1.6fr);
+  align-items: start;
+  gap: 32px;
+  padding: 48px 0 32px;
 }
-.footer-contact > div { min-width: 0; }
-.footer-contact h3 { color: var(--white); font-size: .9rem; margin: 0 0 14px; }
-.footer-contact a, .footer-contact p { display: block; color: #afbbc8; font-size: .85rem; margin: 0 0 7px; overflow-wrap: anywhere; }
-.footer-contact a:hover { color: var(--cyan); }
-@media (max-width: 920px) { .footer-contact { grid-template-columns: 1fr 1fr; gap: 28px; } }
-@media (max-width: 680px) { .footer-contact { grid-template-columns: minmax(0,1fr); padding: 32px 0; } }
-
-.footer-top {
-  display: grid;
-  grid-template-columns: 1.25fr .55fr 1fr;
-  gap: 85px;
-  padding: 70px 0 54px;
-}
-
-.footer-brand img {
-  width: 190px;
-  margin-bottom: 22px;
-  padding: 8px;
-  background: var(--white);
-}
-
-.footer-brand p {
-  max-width: 360px;
-}
-
-.footer-top h3 {
-  margin-bottom: 20px;
-  color: var(--white);
-  font-size: .9rem;
-  letter-spacing: .05em;
-}
-
-.footer-top a,
-.footer-top > div:not(.footer-brand) p {
+.footer-grid > * { min-width: 0; }
+.footer-grid h3 { margin: 0 0 18px; color: #f5f7fa; font-size: .9rem; font-weight: 700; }
+.footer-grid p, .footer-grid address, .footer-grid a { font-size: .84rem; line-height: 1.7; }
+.footer-grid p, .footer-grid address { margin: 0 0 14px; font-style: normal; }
+.footer-grid a { color: #afbbc8; text-decoration: none; }
+.footer-grid a:hover, .footer-bottom a:hover { color: var(--cyan); }
+.footer-links > a, .footer-phones > a, .footer-emails > a {
   display: block;
-  margin-bottom: 9px;
-  color: #94a3b4;
-  font-size: .83rem;
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 4px;
+  padding: 3px 0;
+  overflow-wrap: anywhere;
 }
-
-.footer-top a:hover {
-  color: var(--cyan);
-}
-
+.footer-phones > a { white-space: nowrap; }
+.footer-logo { display: inline-block; margin-bottom: 12px; }
+.footer-logo img { display: block; width: 168px; height: auto; padding: 6px; background: #fff; border-radius: 3px; }
+.footer-grid .footer-meta { margin-top: 16px; margin-bottom: 0; font-size: .73rem; color: #93a2b5; }
 .footer-bottom {
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
-  border-top: 1px solid rgba(255, 255, 255, .09);
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0 24px;
+  border-top: 1px solid rgba(255,255,255,.055);
   font-size: .75rem;
 }
-
-.footer-bottom p {
-  margin: 0;
+.footer-bottom p { margin: 0; }
+@media (max-width: 1000px) {
+  .footer-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 30px 40px; }
+}
+@media (max-width: 680px) {
+  .footer-grid { grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); padding: 32px 0 26px; gap: 28px 20px; }
+  .footer-identity, .footer-emails { grid-column: 1 / -1; }
+  .footer-grid h3 { margin-bottom: 12px; }
+  .footer-links > a, .footer-phones > a, .footer-emails > a { padding: 6px 0; }
+  .footer-bottom { align-items: flex-start; }
 }
 
 .reveal {
@@ -1543,11 +1526,6 @@ h3 {
     padding: 18px;
   }
 
-  .footer-top {
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
   .footer-bottom {
     flex-direction: column;
     gap: 8px;
@@ -1697,6 +1675,10 @@ h3 {
 .about-signature img { width: 100%; height: auto; border-radius: 6px; }
 .about-signature h2 { font-size: clamp(1.9rem,3.5vw,3rem); }
 .request-context { padding: 12px 14px; background: #eef7fb; border-left: 3px solid var(--cyan); font-size: .85rem; }
+.discovery-fields { min-width: 0; margin: 24px 0; padding: 18px 16px 0; border: 1px solid var(--line); }
+.discovery-fields legend { padding: 0 6px; color: var(--navy); font-size: .9rem; font-weight: 800; }
+.discovery-note { color: var(--muted); font-size: .78rem; margin: 0 0 16px; }
+.contact-form [hidden] { display: none !important; }
 .project-request { display: inline-block; color: white; font-size: .8rem; border-bottom: 1px solid #ffffff80; margin-top: 12px; padding: 4px 0; }
 .project-card figcaption { z-index: 2; }
 .project-card::after { pointer-events: none; }

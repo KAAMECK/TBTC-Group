@@ -54,11 +54,69 @@ const serviceNames = { construction: 'Construction', formation: 'Formation', tra
 const serviceKey = new URLSearchParams(window.location.search).get('service');
 const selectedService = Object.hasOwn(serviceNames, serviceKey) ? serviceNames[serviceKey] : '';
 const serviceSubjects = { construction: 'Demande de devis', formation: 'Demande de formation', track: 'Équipement de flotte', business: 'Demande d’offre', electronique: 'Demande d’intervention', elevage: 'Demande de commande' };
-if (form && selectedService) {
+let visitStorage;
+try { visitStorage = window.sessionStorage; } catch (_) {}
+const visitSource = window.TBTC_ATTRIBUTION?.resolve(window.location.href, document.referrer, visitStorage);
+let sourceIsAutomatic = Boolean(visitSource);
+
+function updateDepartment() {
+  const key = form.elements.departement.value;
+  const name = Object.hasOwn(serviceNames, key) ? serviceNames[key] : '';
   const context = document.querySelector('#request-context');
-  context.textContent = `Votre demande : TBTC ${selectedService}`;
-  context.hidden = false;
-  form.elements.message.placeholder = `Décrivez votre besoin en ${selectedService.toLocaleLowerCase('fr')} en quelques mots.`;
+  context.textContent = name ? `Votre demande : TBTC ${name}` : '';
+  context.hidden = !name;
+  form.elements.message.placeholder = name ? `Décrivez votre besoin en ${name.toLocaleLowerCase('fr')} en quelques mots.` : 'Décrivez votre besoin en quelques mots.';
+}
+
+function toggleFields(id, show) {
+  const section = document.getElementById(id);
+  section.hidden = !show;
+  section.querySelectorAll('input, select').forEach(input => {
+    input.disabled = !show;
+    input.required = show;
+    if (!show) input.setCustomValidity('');
+  });
+}
+
+function updateDiscovery() {
+  const origin = form.elements.origine.value;
+  toggleFields('social-fields', origin === 'social');
+  toggleFields('source-detail-fields', ['search', 'website', 'other'].includes(origin) || (origin === 'social' && form.elements.reseau.value === 'Autre'));
+  toggleFields('commission-fields', origin === 'commissionnaire');
+  document.getElementById('discovery-note').textContent = sourceIsAutomatic
+    ? 'Provenance préremplie à partir du lien reçu. Vous pouvez la corriger.'
+    : 'Choisissez la source qui vous a fait découvrir le site.';
+}
+
+function prepareForm() {
+  form.elements.departement.value = selectedService ? serviceKey : '';
+  sourceIsAutomatic = Boolean(visitSource);
+  if (visitSource) {
+    form.elements.origine.value = visitSource.type;
+    form.elements.reseau.value = visitSource.network;
+    form.elements.source_detail.value = visitSource.detail;
+  }
+  updateDepartment();
+  updateDiscovery();
+}
+
+if (form) {
+  prepareForm();
+  form.elements.departement.addEventListener('change', updateDepartment);
+  ['origine', 'reseau', 'source_detail'].forEach(name => {
+    form.elements[name].addEventListener('input', () => {
+      sourceIsAutomatic = false;
+      updateDiscovery();
+    });
+  });
+  ['telephone', 'commissionnaire_telephone'].forEach(name => {
+    const input = form.elements[name];
+    input.addEventListener('input', () => {
+      const digits = input.value.replace(/\D/g, '');
+      const valid = /^[+\d\s().-]+$/.test(input.value) && digits.length >= 7 && digits.length <= 15;
+      input.setCustomValidity(input.value && !valid ? 'Indiquez un numéro valide de 7 à 15 chiffres, avec l’indicatif si nécessaire.' : '');
+    });
+  });
 }
 
 const kinshasaDate = new Intl.DateTimeFormat('fr-FR', {
@@ -75,7 +133,23 @@ const kinshasaTime = new Intl.DateTimeFormat('fr-FR', {
 
 form?.addEventListener('submit', (event) => {
   event.preventDefault();
+  if (form.getAttribute('aria-busy') === 'true') return;
+  form.querySelectorAll('input:not(:disabled), textarea:not(:disabled)').forEach(input => { input.value = input.value.trim(); });
+  if (!form.reportValidity()) return;
   const data = new FormData(form);
+  const departmentKey = String(data.get('departement') || '');
+  if (!Object.hasOwn(serviceNames, departmentKey)) return;
+  const sourceLabels = { commissionnaire: 'Commissionnaire', social: 'Réseau social / messagerie', search: 'Moteur de recherche', website: 'Autre site', direct: 'Adresse saisie ou favori', other: 'Autre source' };
+  const origin = String(data.get('origine') || '');
+  if (!Object.hasOwn(sourceLabels, origin)) return;
+  const sourceParts = [sourceLabels[origin]];
+  if (origin === 'social') sourceParts.push(String(data.get('reseau') || ''));
+  if (data.get('source_detail')) sourceParts.push(String(data.get('source_detail')).trim());
+  if (origin === 'commissionnaire') {
+    sourceParts.push('Nom : ' + String(data.get('commissionnaire_nom') || '').trim());
+    sourceParts.push('Téléphone : ' + String(data.get('commissionnaire_telephone') || '').trim());
+  }
+  sourceParts.push(sourceIsAutomatic ? 'Préremplie (' + visitSource.mode + ')' : 'Déclarée par le client');
   const apiUrl = window.TBTC_CONFIG?.apiUrl;
   const button = form.querySelector('button[type="submit"]');
   const buttonLabel = button.querySelector('.submit-button-label');
@@ -89,16 +163,15 @@ form?.addEventListener('submit', (event) => {
   const payload = new URLSearchParams({
     nom: String(data.get('nom') || ''),
     message: String(data.get('message') || ''),
-    // Valeurs internes : elles préservent la compatibilité avec le registre existant
-    // sans demander ces informations au visiteur.
-    telephone: '#',
+    telephone: String(data.get('telephone') || '').trim(),
     email: '#',
-    departement: selectedService || 'Demande générale',
-    objet: selectedService ? serviceSubjects[serviceKey] : 'Demande de devis',
+    departement: serviceNames[departmentKey],
+    objet: serviceSubjects[departmentKey],
     lieu: '#',
     budget: '#',
     delai: '#',
-    source: 'Site web',
+    // La colonne Source du registre existant conserve aussi le commissionnaire.
+    source: sourceParts.join(' | '),
     priorite: 'Normale',
     website: String(data.get('website') || '')
   });
@@ -116,6 +189,7 @@ form?.addEventListener('submit', (event) => {
     .then((result) => {
       if (!result.ok) throw new Error(result.error || 'Enregistrement impossible');
       form.reset();
+      prepareForm();
       const receivedAt = new Date(result.receivedAt || Date.now());
       receiptReference.textContent = result.reference || '#';
       receiptDate.textContent = kinshasaDate.format(receivedAt);
