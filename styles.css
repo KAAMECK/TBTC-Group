@@ -1157,6 +1157,20 @@ h3 {
   border-top: 1px solid rgba(255, 255, 255, .08);
 }
 
+.footer-contact {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 36px;
+  padding: 44px 0;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.footer-contact > div { min-width: 0; }
+.footer-contact h3 { color: var(--white); font-size: .9rem; margin: 0 0 14px; }
+.footer-contact a, .footer-contact p { display: block; color: #afbbc8; font-size: .85rem; margin: 0 0 7px; overflow-wrap: anywhere; }
+.footer-contact a:hover { color: var(--cyan); }
+@media (max-width: 920px) { .footer-contact { grid-template-columns: 1fr 1fr; gap: 28px; } }
+@media (max-width: 680px) { .footer-contact { grid-template-columns: minmax(0,1fr); padding: 32px 0; } }
+
 .footer-top {
   display: grid;
   grid-template-columns: 1.25fr .55fr 1fr;
@@ -1656,4 +1670,170 @@ h3 {
   .cta-strip { padding: 58px 0; }
   .cta-strip .container { align-items: stretch; flex-direction: column; }
   .cta-strip .button { width: 100%; }
+}
+
+
+/* Présentation des services et parcours de demande */
+.page-hero-contact::before { background-image: url('assets/images/departements/accueil.webp'); }
+.page-hero-contact .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.services-preview { padding: 64px 0; background: #f5f7f8; }
+.services-intro { display: grid; grid-template-columns: 1.1fr 1fr; align-items: end; gap: 48px; margin-bottom: 28px; }
+.services-intro h2 { font-size: clamp(1.8rem,3vw,2.6rem); margin-bottom: 0; }
+.services-intro > p { color: var(--muted); margin-bottom: 0; }
+.service-tiles { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 14px; }
+.service-tile { min-width: 0; background: white; border: 1px solid #e3e8ec; border-radius: 6px; overflow: hidden; transition: transform .2s,box-shadow .2s; }
+.service-tile:hover { transform: translateY(-4px); box-shadow: 0 10px 24px #08162912; }
+.service-tile img { display: block; width: 100%; height: auto; aspect-ratio: 1.4; object-fit: contain; background: white; }
+.service-tile div { border-top: 2px solid var(--accent); padding: 16px 13px; }
+.service-tile h3 { font-size: .95rem; margin: 0 0 8px; }
+.service-tile p { font-size: .8rem; line-height: 1.55; color: var(--muted); min-height: 3.2em; margin: 0 0 12px; }
+.service-tile span { font-size: .73rem; color: var(--navy); font-weight: 700; }
+.department-visual { display: block; width: 100%; height: auto; aspect-ratio: 1.4; object-fit: contain; background: #fff; margin-bottom: 24px; border-radius: 4px; }
+.department-card { display: flex; flex-direction: column; }
+.department-card > a { margin-top: auto; padding-top: 22px; }
+.department-card, #contact-form, #services-title { scroll-margin-top: 105px; }
+.service-followup { display: block; margin-top: 20px; color: white; }
+.about-signature { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 56px; margin-bottom: 84px; }
+.about-signature img { width: 100%; height: auto; border-radius: 6px; }
+.about-signature h2 { font-size: clamp(1.9rem,3.5vw,3rem); }
+.request-context { padding: 12px 14px; background: #eef7fb; border-left: 3px solid var(--cyan); font-size: .85rem; }
+.project-request { display: inline-block; color: white; font-size: .8rem; border-bottom: 1px solid #ffffff80; margin-top: 12px; padding: 4px 0; }
+.project-card figcaption { z-index: 2; }
+.project-card::after { pointer-events: none; }
+.page-hero h1, .section-heading h2, .about-signature h2 { overflow-wrap: anywhere; hyphens: auto; }
+@media (max-width:920px) {
+  .main-nav { visibility: hidden; }
+  .menu-open .main-nav { visibility: visible; }
+}
+a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+@media (max-width:1100px) { .service-tiles { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+@media (max-width:680px) {
+  .services-preview { padding: 42px 0; }
+  .services-intro,.about-signature { grid-template-columns: minmax(0,1fr); gap: 20px; }
+  .service-tiles { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+  .service-tile div { padding: 13px 11px; }
+  .about-signature { margin-bottom: 46px; }
+  .page-hero-contact .hero-actions .button { padding: 14px 18px; }
+}
+@media (prefers-reduced-motion:reduce) { .service-tile { transition: none; } }
+
+/* Accueil : aperçu visuel placé avant la demande de devis */
+.brand-visuals {
+  padding: 112px 0;
+  background: #eef3f6;
+}
+
+.brand-visuals-heading {
+  max-width: 760px;
+  margin-bottom: 44px;
+}
+
+.brand-visuals-heading h2 {
+  margin: 0 0 16px;
+  color: var(--navy);
+  font-size: clamp(2.3rem, 4.5vw, 4.2rem);
+}
+
+.brand-visuals-heading > p:not(.eyebrow) {
+  max-width: 650px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.brand-visuals-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .9fr .9fr;
+  gap: 18px;
+}
+
+.brand-visual-card {
+  position: relative;
+  min-height: 350px;
+  margin: 0;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.brand-visual-feature {
+  min-height: 470px;
+}
+
+.brand-visual-card img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.brand-visual-card::after {
+  position: absolute;
+  content: '';
+  inset: 0;
+  background: linear-gradient(180deg, transparent 28%, rgba(5, 14, 27, .86) 100%);
+}
+
+.brand-visual-card:hover img {
+  transform: scale(1.045);
+}
+
+.brand-visual-card figcaption {
+  position: absolute;
+  z-index: 1;
+  right: 24px;
+  bottom: 23px;
+  left: 24px;
+  color: var(--white);
+}
+
+.brand-visual-card figcaption span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--cyan);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+}
+
+.brand-visual-card figcaption strong {
+  display: block;
+  font-size: 1.28rem;
+}
+
+.brand-visual-card figcaption p {
+  margin: 6px 0 0;
+  color: rgba(255, 255, 255, .78);
+  font-size: .84rem;
+}
+
+@media (max-width: 920px) {
+  .brand-visuals-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .brand-visual-feature {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 680px) {
+  .brand-visuals {
+    padding: 78px 0;
+  }
+
+  .brand-visuals-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .brand-visual-feature {
+    grid-column: auto;
+  }
+
+  .brand-visual-card,
+  .brand-visual-feature {
+    min-height: 300px;
+  }
 }

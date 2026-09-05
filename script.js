@@ -50,6 +50,16 @@ const receipt = document.querySelector('#submission-receipt');
 const receiptReference = document.querySelector('#receipt-reference');
 const receiptDate = document.querySelector('#receipt-date');
 const receiptTime = document.querySelector('#receipt-time');
+const serviceNames = { construction: 'Construction', formation: 'Formation', track: 'Track', business: 'Business', electronique: 'Électronique', elevage: 'Élevage' };
+const serviceKey = new URLSearchParams(window.location.search).get('service');
+const selectedService = Object.hasOwn(serviceNames, serviceKey) ? serviceNames[serviceKey] : '';
+const serviceSubjects = { construction: 'Demande de devis', formation: 'Demande de formation', track: 'Équipement de flotte', business: 'Demande d’offre', electronique: 'Demande d’intervention', elevage: 'Demande de commande' };
+if (form && selectedService) {
+  const context = document.querySelector('#request-context');
+  context.textContent = `Votre demande : TBTC ${selectedService}`;
+  context.hidden = false;
+  form.elements.message.placeholder = `Décrivez votre besoin en ${selectedService.toLocaleLowerCase('fr')} en quelques mots.`;
+}
 
 const kinshasaDate = new Intl.DateTimeFormat('fr-FR', {
   timeZone: 'Africa/Kinshasa',
@@ -83,8 +93,8 @@ form?.addEventListener('submit', (event) => {
     // sans demander ces informations au visiteur.
     telephone: '#',
     email: '#',
-    departement: 'Demande générale',
-    objet: 'Demande de devis',
+    departement: selectedService || 'Demande générale',
+    objet: selectedService ? serviceSubjects[serviceKey] : 'Demande de devis',
     lieu: '#',
     budget: '#',
     delai: '#',
@@ -120,7 +130,7 @@ form?.addEventListener('submit', (event) => {
     .finally(() => {
       button.disabled = false;
       button.classList.remove('is-loading');
-      buttonLabel.textContent = 'Envoyer la demande';
+      buttonLabel.textContent = button.dataset.defaultLabel || 'Envoyer la demande';
       form.removeAttribute('aria-busy');
     });
 });

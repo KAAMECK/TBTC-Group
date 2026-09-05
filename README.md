@@ -4,15 +4,20 @@ Site vitrine multipage de TBTC Group, publié avec GitHub Pages.
 
 ## Pages
 
-- `index.html` — page d’accueil À propos
-- `a-propos.html` — redirection de compatibilité vers la page À propos
+- `index.html` — accueil, aperçu des six services et formulaire de demande
+- `a-propos.html` — présentation, engagements et méthode du groupe
 - `departements.html` — les six pôles d’expertise
-- `realisations.html` — galerie et suivi des travaux
-- `contact.html` — coordonnées, formulaire et accusé d’enregistrement
+- `realisations.html` — galerie de conceptions architecturales
+- `contact.html` — redirection de compatibilité vers l’accueil
 
 ## Formulaire administratif
 
 Le formulaire de devis demande uniquement le nom et une brève description du besoin. L’application Web Google Apps Script configurée dans `config.js` ajoute automatiquement la date, l’heure et la référence.
+
+Les liens des offres précisent automatiquement le département et l’objet de la demande, sans ajouter de champ au formulaire. Les visuels de la charte sont optimisés en WebP dans `assets/images/departements/`.
+
+Présentation locale : http://127.0.0.1:8092/TBTC/ (serveur PHP local actif).
+Les modifications locales ne doivent être publiées que sur demande explicite.
 
 ## Publication
 

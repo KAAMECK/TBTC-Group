@@ -17,18 +17,18 @@
   <a class="skip-link" href="#contenu">Aller au contenu</a>
   <header class="site-header" id="header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="TBTC Group — À propos">
+      <a class="brand" href="index.html" aria-label="TBTC Group — Accueil">
         <img src="assets/logo-tbtc.svg" alt="TBTC Group">
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" aria-label="Ouvrir le menu">
         <span></span><span></span><span></span>
       </button>
       <nav class="main-nav" id="navigation" aria-label="Navigation principale">
-        <a href="contact.html">Contact</a>
-        <a href="index.html">À propos</a>
+        <a href="index.html">Accueil</a>
+        <a href="a-propos.html">À propos</a>
         <a href="departements.html" class="is-active" aria-current="page">Départements</a>
         <a href="realisations.html">Réalisations</a>
-        <a class="nav-cta" href="contact.html#contact-form">Demander un devis</a>
+        <a class="nav-cta" href="index.html#contact-form">Demander un devis</a>
       </nav>
     </div>
   </header>
@@ -36,7 +36,7 @@
     <section class="page-hero page-hero-departments" aria-labelledby="page-title">
       <div class="page-hero-overlay" aria-hidden="true"></div>
       <div class="container reveal">
-        <p class="breadcrumb"><a href="index.html">À propos</a><span>→</span>Départements</p>
+        <p class="breadcrumb"><a href="index.html">Accueil</a><span>→</span>Départements</p>
         <p class="eyebrow light">Départements</p>
         <h1 id="page-title">Six pôles spécialisés. Une coordination commune.</h1>
         <p>Chaque demande est orientée vers les compétences adaptées, avec la possibilité de réunir plusieurs départements autour d’un même projet.</p>
@@ -49,12 +49,12 @@
             <p class="eyebrow">Nos départements</p>
             <h2>Six pôles. Une même exigence de résultat.</h2>
           </div>
-          <p>Chaque département possède sa spécialité, son code couleur et une offre structurée pour faciliter l’orientation de vos besoins.</p>
+          <p>Choisissez le savoir-faire qui correspond à votre besoin. Notre équipe vous accompagne pour préciser votre demande et préparer une proposition adaptée.</p>
         </div>
 
         <div class="departments-grid">
-          <article class="department-card reveal" style="--accent:#15b2ea">
-            <div class="department-top"><span class="department-code">01</span><span class="department-line"></span></div>
+          <article id="construction" class="department-card reveal" style="--accent:#15b2ea">
+            <img class="department-visual" src="assets/images/departements/construction.webp" alt="Identité TBTC Construction" width="600" height="426" loading="lazy"><div class="department-top"><span class="department-code">01</span><span class="department-line"></span></div>
             <h3>TBTC Construction</h3>
             <p>Études, conception, devis, suivi et exécution de travaux de bâtiment et d’infrastructures.</p>
             <ul>
@@ -62,11 +62,11 @@
               <li>Architecture, métrés et devis</li>
               <li>Rénovation et suivi de chantier</li>
             </ul>
-            <a href="departements.html#construction">Voir le pôle <span>→</span></a>
+            <a href="index.html?service=construction#contact-form">Demander un devis <span>→</span></a>
           </article>
 
-          <article class="department-card reveal delay-1" style="--accent:#4d0c83">
-            <div class="department-top"><span class="department-code">02</span><span class="department-line"></span></div>
+          <article id="formation" class="department-card reveal delay-1" style="--accent:#4d0c83">
+            <img class="department-visual" src="assets/images/departements/formation.webp" alt="Identité TBTC Formation" width="600" height="426" loading="lazy"><div class="department-top"><span class="department-code">02</span><span class="department-line"></span></div>
             <h3>TBTC Formation</h3>
             <p>Développement des compétences pour professionnels, entreprises, étudiants et particuliers.</p>
             <ul>
@@ -74,11 +74,11 @@
               <li>Ateliers et séminaires pratiques</li>
               <li>Évaluations et certifications</li>
             </ul>
-            <a href="contact.html">Planifier une formation <span>→</span></a>
+            <a href="index.html?service=formation#contact-form">Planifier une formation <span>→</span></a>
           </article>
 
-          <article class="department-card reveal delay-2" style="--accent:#e60000">
-            <div class="department-top"><span class="department-code">03</span><span class="department-line"></span></div>
+          <article id="track" class="department-card reveal delay-2" style="--accent:#e60000">
+            <img class="department-visual" src="assets/images/departements/track.webp" alt="Identité TBTC Track" width="600" height="426" loading="lazy"><div class="department-top"><span class="department-code">03</span><span class="department-line"></span></div>
             <h3>TBTC Track</h3>
             <p>Solutions de géolocalisation, de télématique et de gestion de flotte en temps réel.</p>
             <ul>
@@ -86,11 +86,11 @@
               <li>Suivi et sécurisation de flotte</li>
               <li>Maintenance et assistance</li>
             </ul>
-            <a href="contact.html">Sécuriser une flotte <span>→</span></a>
+            <a href="index.html?service=track#contact-form">Équiper ma flotte <span>→</span></a>
           </article>
 
-          <article class="department-card reveal" style="--accent:#ff4d00">
-            <div class="department-top"><span class="department-code">04</span><span class="department-line"></span></div>
+          <article id="business" class="department-card reveal" style="--accent:#ff4d00">
+            <img class="department-visual" src="assets/images/departements/business.webp" alt="Identité TBTC Business" width="600" height="426" loading="lazy"><div class="department-top"><span class="department-code">04</span><span class="department-line"></span></div>
             <h3>TBTC Business</h3>
             <p>Commerce technologique et accompagnement des entreprises dans leur développement.</p>
             <ul>
@@ -98,11 +98,11 @@
               <li>Équipements téléphoniques</li>
               <li>Conseil et développement d’affaires</li>
             </ul>
-            <a href="contact.html">Demander une offre <span>→</span></a>
+            <a href="index.html?service=business#contact-form">Demander une offre <span>→</span></a>
           </article>
 
-          <article class="department-card reveal delay-1" style="--accent:#0822bf">
-            <div class="department-top"><span class="department-code">05</span><span class="department-line"></span></div>
+          <article id="electronique" class="department-card reveal delay-1" style="--accent:#0822bf">
+            <img class="department-visual" src="assets/images/departements/electronique.webp" alt="Identité TBTC Électronique" width="600" height="426" loading="lazy"><div class="department-top"><span class="department-code">05</span><span class="department-line"></span></div>
             <h3>TBTC Électronique</h3>
             <p>Fourniture, installation et maintenance de systèmes informatiques et électroniques.</p>
             <ul>
@@ -110,11 +110,11 @@
               <li>Équipements, serveurs et systèmes</li>
               <li>Maintenance préventive et curative</li>
             </ul>
-            <a href="contact.html">Décrire un besoin <span>→</span></a>
+            <a href="index.html?service=electronique#contact-form">Demander une intervention <span>→</span></a>
           </article>
 
-          <article class="department-card reveal delay-2" style="--accent:#15b74b">
-            <div class="department-top"><span class="department-code">06</span><span class="department-line"></span></div>
+          <article id="elevage" class="department-card reveal delay-2" style="--accent:#15b74b">
+            <img class="department-visual" src="assets/images/departements/elevage.webp" alt="Identité TBTC Élevage" width="600" height="426" loading="lazy"><div class="department-top"><span class="department-code">06</span><span class="department-line"></span></div>
             <h3>TBTC Élevage</h3>
             <p>Production animale, intrants, accompagnement de fermes et conseil agro-pastoral.</p>
             <ul>
@@ -122,12 +122,12 @@
               <li>Aliments et suivi vétérinaire</li>
               <li>Conseil en gestion d’exploitation</li>
             </ul>
-            <a href="contact.html">Parler à un conseiller <span>→</span></a>
+            <a href="index.html?service=elevage#contact-form">Préparer ma commande <span>→</span></a>
           </article>
         </div>
       </div>
     </section>
-<section class="construction-section" id="construction">
+<section class="construction-section" id="conception">
       <div class="construction-image reveal" role="img" aria-label="Perspective architecturale d’une résidence R+4 conçue par TBTC"></div>
       <div class="construction-content reveal delay-1">
         <p class="eyebrow light">Focus conception</p>
@@ -138,17 +138,35 @@
           <div><span>02</span><p><b>Plans & visualisation 3D</b>Façades, perspectives, volumes et présentation architecturale du projet.</p></div>
           <div><span>03</span><p><b>Étude & préparation</b>Métrés, devis, choix techniques et organisation de la phase de construction.</p></div>
         </div>
-        <a class="button button-white" href="realisations.html">Découvrir nos conceptions</a>
+        <a class="button button-white" href="realisations.html">Découvrir nos conceptions</a><a class="text-link service-followup" href="index.html?service=construction#contact-form">Parler de mon projet de construction →</a>
       </div>
     </section>
 <section class="cta-strip">
       <div class="container reveal">
         <div><p class="eyebrow light">Un projet à concrétiser ?</p><h2>Parlons de votre besoin.</h2></div>
-        <a class="button button-primary" href="contact.html#contact-form">Demander un devis</a>
+        <a class="button button-primary" href="index.html#contact-form">Demander un devis</a>
       </div>
     </section>
   </main>
 <footer class="site-footer">
+          <div class="container footer-contact">
+            <div>
+              <h3>Téléphones</h3>
+              <a href="tel:+243819810064">+243 819 810 064</a>
+              <a href="tel:+243981973754">+243 981 973 754</a>
+              <a href="tel:+243846128067">+243 846 128 067</a>
+              <a href="tel:+24205864294">+242 058 64 294</a>
+            </div>
+            <div>
+              <h3>E-mails</h3>
+              <a href="mailto:tsidkeenutshilewubeya@gmail.com">tsidkeenutshilewubeya@gmail.com</a>
+              <a href="mailto:tsidkenutshilewuformation@gmail.com">tsidkenutshilewuformation@gmail.com</a>
+            </div>
+            <div>
+              <h3>Adresse</h3>
+              <p>Kinshasa, République démocratique du Congo<br>Adresse complète : #</p>
+            </div>
+          </div>
     <div class="container footer-top">
       <div class="footer-brand">
         <img src="assets/logo-tbtc.svg" alt="TBTC Group">
@@ -156,8 +174,8 @@
       </div>
       <div>
         <h3>Navigation</h3>
-        <a href="contact.html">Contact</a>
-        <a href="index.html">À propos</a>
+        <a href="index.html">Accueil</a>
+        <a href="a-propos.html">À propos</a>
         <a href="departements.html">Départements</a>
         <a href="realisations.html">Réalisations</a>
       </div>
